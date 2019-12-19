@@ -1,20 +1,17 @@
 {
-  "name": "MushinyReactComponents",
+  "name": "mushiny-react-components",
   "version": "0.0.1",
   "description": "MushinyReactComponents",
   "keywords": [
     "MushinyReactComponents"
   ],
-  "homepage": "https://github.com/ant-design/ant-design-pro-layout#readme",
-  "bugs": {
-    "url": "https://github.com/ant-design/ant-design-pro-layout/issues"
-  },
+  "homepage": "https://github.com/oraclexudehua/MushinyReactComponents",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ant-design/ant-design-pro-layout"
+    "url": "git+https://github.com/oraclexudehua/MushinyReactComponents"
   },
   "license": "MIT",
-  "author": "qixian.cs@outlook.com",
+  "author": "dehua.xu@mushiny.com",
   "files": [
     "/lib",
     "/es"
@@ -32,7 +29,7 @@
     "lint-staged:js": "eslint --cache --ext .js,.jsx,.ts,.tsx --format=pretty",
     "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./**/src ./tests && npm run lint:style",
     "lint:style": "stylelint --fix \"src/**/*.less\" --syntax less",
-    "prepublishOnly": "npm run test && npm run build && np --no-cleanup --yolo --no-publish",
+    "prepublishOnly": " npm run build",
     "prettier": "prettier -c --write \"**/**\"",
     "site": " build-storybook && gh-pages -d ./storybook-static",
     "start": "cd ./example && umi dev",
