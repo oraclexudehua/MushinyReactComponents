@@ -11,8 +11,10 @@ import ProLayout, {
   SettingDrawer,
   DefaultFooter,
   PageHeaderWrapper,
-  MushinySelect
+  MushinySelect,
+  CaugePlugin,
 } from '../../../src/';
+import { InputNumber } from 'antd';
 import React, { useState } from 'react';
 import { Icon } from 'antd';
 
@@ -34,22 +36,45 @@ export type BasicLayoutContext = { [K in 'location']: BasicLayoutProps[K] } & {
 
 const BasicLayout: React.FC<BasicLayoutProps> = props => {
   const [collapsed, handleMenuCollapse] = useState<boolean>(false);
+  const [value, setValue] = useState<number>(12);
   const [settings, setSettings] = useState<Partial<Settings>>({
     fixSiderbar: true,
     fixedHeader: true,
     navTheme: 'light',
   });
   return (
-    <MushinySelect
-      style={{width:100}}
-      optionsSources={[
-        {
-          label: '张三',
-          value: '1',
-          key: '1'
-        }
-      ]}
-    />
+    <div>
+      <div>
+        <CaugePlugin maxTemp={100} minTemp={40} width={30} fillColor={'blue'} value={value} />
+        <InputNumber
+          onChange={value => {
+            if (value != null) {
+              setValue(parseInt(value.toString()));
+            }
+          }}
+        />
+      </div>
+      <div>
+        <CaugePlugin value={10} />
+        {/* <InputNumber
+          onChange={value => {
+            if (value != null) {
+              setValue(parseInt(value.toString()));
+            }
+          }}
+        /> */}
+      </div>
+    </div>
+    // <MushinySelect
+    //   style={{width:100}}
+    //   optionsSources={[
+    //     {
+    //       label: '张三',
+    //       value: '1',
+    //       key: '1'
+    //     }
+    //   ]}
+    // />
   );
 };
 
