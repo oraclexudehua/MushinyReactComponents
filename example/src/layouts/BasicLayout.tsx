@@ -14,7 +14,7 @@ import ProLayout, {
   MushinySelect,
   CaugePlugin,
 } from '../../../src/';
-import { InputNumber } from 'antd';
+import { InputNumber, Select } from 'antd';
 import React, { useState } from 'react';
 import { Icon } from 'antd';
 
@@ -43,38 +43,24 @@ const BasicLayout: React.FC<BasicLayoutProps> = props => {
     navTheme: 'light',
   });
   return (
-    <div>
-      <div>
-        <CaugePlugin maxTemp={100} minTemp={40} width={30} fillColor={'blue'} value={value} />
-        <InputNumber
-          onChange={value => {
-            if (value != null) {
-              setValue(parseInt(value.toString()));
-            }
-          }}
-        />
-      </div>
-      <div>
-        <CaugePlugin value={10} />
-        {/* <InputNumber
-          onChange={value => {
-            if (value != null) {
-              setValue(parseInt(value.toString()));
-            }
-          }}
-        /> */}
-      </div>
-    </div>
-    // <MushinySelect
-    //   style={{width:100}}
-    //   optionsSources={[
-    //     {
-    //       label: '张三',
-    //       value: '1',
-    //       key: '1'
-    //     }
-    //   ]}
-    // />
+    <MushinySelect
+      style={{ width: 100 }}
+      optionsSources={[
+        {
+          label: '张三',
+          value: '1',
+          key: '1',
+        },
+      ]}
+      renderOption={(record, index) => {
+        return (
+          <Select.Option value={record.value}>
+            {record.label}
+            {`(${record.value})`}
+          </Select.Option>
+        );
+      }}
+    />
   );
 };
 
